@@ -34,7 +34,7 @@ div(ng-controller="LoginCtrl")
 
 
 
-	.modal.fade#login(tabindex="-1")
+	.modal.fade#login(tabindex="0")
 		.modal-dialog
 			.modal-content
 				.modal-header
@@ -42,24 +42,15 @@ div(ng-controller="LoginCtrl")
 					h4.modal-title Login
 				.modal-body
 					.row
-						.col-sm-6(ng-show="auth.user")
-							p
-								img(ng-src="{{auth.user.thumbnailImg}}")
-							p.lead Logged in as {{auth.user.name}}
-							p
-								a.btn.btn-default(href="#" ng-click="auth.$logout()") Logout
 						.col-sm-6(ng-hide="auth.user")
 							// Thanks http://nicolasgallagher.com/lab/css3-social-signin-buttons/
-							p.lead Login using...
+							p.lead You can login using...
 							p
 								a(href="#" ng-click="auth.$login('facebook')").btn-auth.btn-facebook Facebook
 							p
 								a(href="#" ng-click="auth.$login('twitter')").btn-auth.btn-twitter Twitter
 							p
 								a(href="#" ng-click="auth.$login('github')").btn-auth.btn-github GitHub
-							p Support Kickstrap Development
-							p
-								script(data-gittip-username="yourwebsitesUX" data-gittip-widget="button" src="//gttp.co/v1.js")
 						.col-sm-6
 							.alert.alert-info
 								h4 Example
@@ -67,3 +58,42 @@ div(ng-controller="LoginCtrl")
 							p When using your own Firebase account, don't forget to 
 								a(href="/docs.html#social-login") setup your app keys and secrets 
 								| for each social network
+						.col-sm-6(ng-show="auth.user")
+							p
+								img(ng-src="{{auth.user.thumbnailImg}}")
+							p.lead You are logged in as  {{auth.user.name}}
+							p
+								a.btn.btn-default(href="#" data-target="#diseases" data-toggle="modal") 
+								a.btn.btn-default(href="#" ng-click="auth.$logout()") Logout
+	.modal.fade#diseases(tabindex="1")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button" data-dismiss="modal") &times;
+					h4.modal-title Diseases
+				.modal-body
+					.row
+						.col-sm-6(ng-hide="auth.user")
+							// Thanks http://nicolasgallagher.com/lab/css3-social-signin-buttons/
+							p.lead You can login using...
+							p
+								a(href="#" ng-click="auth.$login('facebook')").btn-auth.btn-facebook Breast Cancer
+							p
+								a(href="#" ng-click="auth.$login('twitter')").btn-auth.btn-twitter Lung Cancer
+							p
+								a(href="#" ng-click="auth.$login('github')").btn-auth.btn-github GitHub
+						.col-sm-6
+							.alert.alert-info
+								h4 Example
+								p This screen simply demonstrates Firebase's native social login authorization.
+							p When using your own Firebase account, don't forget to 
+								a(href="/docs.html#social-login") setup your app keys and secrets 
+								| for each social network
+						.col-sm-6(ng-show="auth.user")
+							p
+								img(ng-src="{{auth.user.thumbnailImg}}")
+							p.lead You are logged in as  {{auth.user.name}}
+							p
+								a.btn.btn-default(href="#" data-target="#login" data-toggle="modal") 
+								a.btn.btn-default(href="#" ng-click="auth.$logout()") Logout
+

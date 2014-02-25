@@ -40,7 +40,7 @@
             </div>
           </div>
         </nav>
-        <div id="login" tabindex="-1" class="modal fade">
+        <div id="login" tabindex="0" class="modal fade">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -49,21 +49,12 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div ng-show="auth.user" class="col-sm-6">
-                    <p><img ng-src="{{auth.user.thumbnailImg}}"></p>
-                    <p class="lead">Logged in as {{auth.user.name}}</p>
-                    <p><a href="#" ng-click="auth.$logout()" class="btn btn-default">Logout</a></p>
-                  </div>
                   <div ng-hide="auth.user" class="col-sm-6">
                     <!-- Thanks http://nicolasgallagher.com/lab/css3-social-signin-buttons/-->
-                    <p class="lead">Login using...</p>
+                    <p class="lead">You can login using...</p>
                     <p><a href="#" ng-click="auth.$login('facebook')" class="btn-auth btn-facebook">Facebook</a></p>
                     <p><a href="#" ng-click="auth.$login('twitter')" class="btn-auth btn-twitter">Twitter</a></p>
                     <p><a href="#" ng-click="auth.$login('github')" class="btn-auth btn-github">GitHub</a></p>
-                    <p>Support Kickstrap Development</p>
-                    <p>
-                      <script data-gittip-username="yourwebsitesUX" data-gittip-widget="button" src="//gttp.co/v1.js"></script>
-                    </p>
                   </div>
                   <div class="col-sm-6">
                     <div class="alert alert-info">
@@ -71,6 +62,44 @@
                       <p>This screen simply demonstrates Firebase's native social login authorization.</p>
                     </div>
                     <p>When using your own Firebase account, don't forget to <a href="/docs.html#social-login">setup your app keys and secrets </a>for each social network</p>
+                  </div>
+                  <div ng-show="auth.user" class="col-sm-6">
+                    <p><img ng-src="{{auth.user.thumbnailImg}}"></p>
+                    <p class="lead">You are logged in as  {{auth.user.name}}</p>
+                    <p><a href="#" data-target="#diseases" data-toggle="modal" class="btn btn-default"> </a><a href="#" ng-click="auth.$logout()" class="btn btn-default">Logout</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="diseases" tabindex="1" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close">&times;</button>
+                <h4 class="modal-title">Diseases</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div ng-hide="auth.user" class="col-sm-6">
+                    <!-- Thanks http://nicolasgallagher.com/lab/css3-social-signin-buttons/-->
+                    <p class="lead">You can login using...</p>
+                    <p><a href="#" ng-click="auth.$login('facebook')" class="btn-auth btn-facebook">Breast Cancer</a></p>
+                    <p><a href="#" ng-click="auth.$login('twitter')" class="btn-auth btn-twitter">Lung Cancer</a></p>
+                    <p><a href="#" ng-click="auth.$login('github')" class="btn-auth btn-github">GitHub</a></p>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="alert alert-info">
+                      <h4>Example</h4>
+                      <p>This screen simply demonstrates Firebase's native social login authorization.</p>
+                    </div>
+                    <p>When using your own Firebase account, don't forget to <a href="/docs.html#social-login">setup your app keys and secrets </a>for each social network</p>
+                  </div>
+                  <div ng-show="auth.user" class="col-sm-6">
+                    <p><img ng-src="{{auth.user.thumbnailImg}}"></p>
+                    <p class="lead">You are logged in as  {{auth.user.name}}</p>
+                    <p><a href="#" data-target="#login" data-toggle="modal" class="btn btn-default"> </a><a href="#" ng-click="auth.$logout()" class="btn btn-default">Logout</a></p>
                   </div>
                 </div>
               </div>
